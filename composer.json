@@ -8,8 +8,22 @@
             "email": "ppbogdan@gmail.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "pbg/socket-client",
+                "version": "0.0.1",
+                "source": {
+                    "url": "https://github.com/pbogdan/pbg-socket-client",
+                    "type": "git",
+                    "reference": "tags/0.0.1"
+                }
+            }
+        }
+    ],
     "require": {
-
+        "pbg/socket-client": "0.0.1"
     },
     "autoload": {
         "psr-0": { "Pbg": "src/"}
