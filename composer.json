@@ -1,0 +1,17 @@
+{
+    "name": "pbg/statsd",
+    "description": "Statsd client",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Piotr Bogdan",
+            "email": "ppbogdan@gmail.com"
+        }
+    ],
+    "require": {
+
+    },
+    "autoload": {
+        "psr-0": { "Pbg": "src/"}
+    }
+}
