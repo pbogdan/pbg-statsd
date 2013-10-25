@@ -10,22 +10,20 @@
     ],
     "repositories": [
         {
-            "type": "package",
-            "package": {
-                "name": "pbg/socket-client",
-                "version": "0.0.1",
-                "source": {
-                    "url": "https://github.com/pbogdan/pbg-socket-client",
-                    "type": "git",
-                    "reference": "tags/0.0.1"
-                }
-            }
+            "type": "vcs",
+            "name": "pbg/socket-client",
+            "version": "0.0.2",
+            "url": "https://github.com/pbogdan/pbg-socket-client",
+            "reference": "tags/0.0.2"
         }
     ],
     "require": {
-        "pbg/socket-client": "0.0.1"
+        "pbg/socket-client": "0.0.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
     },
     "autoload": {
-        "psr-0": { "Pbg": "src/"}
+        "psr-0": { "Pbg\\Statsd\\": "src/" }
     }
 }
