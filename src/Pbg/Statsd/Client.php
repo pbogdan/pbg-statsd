@@ -15,7 +15,6 @@ class Client
             ->setHost("127.0.0.1")
             ->setPort(8125)
             ->connect();
-        $c->send("lol|@1234");
 
         $this->client = $c;
     }
@@ -23,46 +22,51 @@ class Client
     public function setClient($client)
     {
         $this->client = $client;
-        return $this;
     }
 
     public function gauge($name, $value)
     {
-        // <metric name>:<value>|g
         $m = sprintf("%s:%d|g", $name, $value);;
-        $this->client->send($m);
+        return $this->send($m);
     }
 
-    public function counter($name, $value, $sampleRate = null)
+    public function counter($name, $value)
     {
-        // <metric name>:<value>|c[|@<sample rate>]
         $m = sprintf("%s:%d|c", $name, $value);
+        return $this->send($m);
+    }
 
-        if ($sampleRate !== null) {
-            $m .= sprintf("|@%d", $sampleRate);
-        }
+    public function inc($name, $value = 1)
+    {
+        return $this->counter($name, $value);
+    }
 
-        $this->client->send($m);
+    public function dec($name, $value = 1)
+    {
+        return $this->counter($name, -1 * $value);
     }
 
     public function timer($name, $value)
     {
-        // <metric name>:<value>|ms
         $m = sprintf("%s:%d|ms", $name, $value);
-        $this->client->send($m);
+        return $this->send($m);
     }
 
     public function histo($name, $value)
     {
-        // <metric name>:<value>|h
         $m = sprintf("%s:%d|h", $name, $value);
-        $this->client->send($m);
+        return $this->send($m);
     }
 
     public function meter($name, $value)
     {
-        // <metric name>:<value>|m
         $m = sprintf("%s:%d|m", $name, $value);
+        return $this->send($m);
+    }
+
+    public function send($m)
+    {
         $this->client->send($m);
+        return $this;
     }
 }
